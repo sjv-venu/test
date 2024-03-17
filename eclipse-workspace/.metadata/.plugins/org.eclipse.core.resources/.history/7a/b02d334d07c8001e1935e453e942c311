@@ -1,0 +1,46 @@
+package test.sample;
+
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest 
+{
+	WebDriver driver;
+    @Test
+    public void shouldAnswerWithTrue() throws InterruptedException
+    {
+    	driver = new ChromeDriver();
+    	driver.manage().window().maximize();
+    	driver.get("https://www.gmail.com");
+    	driver.manage().timeouts().implicitlyWait(5000,TimeUnit.SECONDS);
+    	Thread.sleep(5000);
+    	ArrayList<WebElement> email = (ArrayList<WebElement>)= (WebElement) driver.findElements(By.xpath("//*[@id=\"identifierId\"]"));
+    	for(WebElement a : email)
+    	{
+    		email.sendKeys("test@gmail.com");
+    		break;
+    	}
+    	@SuppressWarnings("unchecked")
+		ArrayList<WebElement> al = (ArrayList<WebElement>) driver.findElement(By.cssSelector("#identifierNext > div > button > span"));
+    	for(WebElement a : al)
+    	{
+    		a.click();
+    		break;
+    	}
+    	Thread.sleep(5000);
+    	driver.quit();
+    	
+    }
+}
+
